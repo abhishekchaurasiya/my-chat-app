@@ -1,0 +1,58 @@
+.joinpage {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.joincontainer {
+    height: 60%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* box-sizing: border-box; */
+}
+
+.joincontainer>img {
+    width: 5vmax;
+}
+
+.joincontainer>h1 {
+    color: white;
+    font-size: 2vmax;
+    width: 25vmax;
+    border-bottom: 0.2vmax solid white;
+    text-align: center;
+    padding: 1vmax;
+    box-sizing: border-box;
+}
+
+#joininput {
+    width: 22vmax;
+    color: rgb(61, 60, 60);
+    outline: none;
+    border: none;
+    font-size: 1.2vmax;
+    padding: 1.5vmax;
+    font-family: 'Poppins', sans-serif;
+}
+
+.joinbtn {
+    width: 25vmax;
+    background-color: crimson;
+    outline: none;
+    border: none;
+    font-size: 1.2vmax;
+    padding: 1vmax;
+    margin: 2vmax;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.joinbtn:hover {
+    background-color: rgb(255, 62, 101);
+    color: white;
+}
