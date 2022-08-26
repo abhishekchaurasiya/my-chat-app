@@ -3,9 +3,8 @@ import "./Message.css";
 
 
 const Message = ({ user, message, classs }) => {
-    if (user) {  // if user is present the send message 
+    if (user) { 
         return (
-            // Here we have import classe in chat component
             <div className={`messageBox ${classs}`}  >  
                 {`${user}: ${message}`}
             </div>

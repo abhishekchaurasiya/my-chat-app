@@ -16,13 +16,13 @@ function Chat() {
 
   const [id, setId] = useState("");
 
-  const [messages, setMessages] = useState([])   //all console ko show karne ke liye apne chat box ke andar
+  const [messages, setMessages] = useState([])
 
   let send = () => {
-    const message = document.getElementById("chatInput").value; // yah chat input ke value get karti hai 
+    const message = document.getElementById("chatInput").value;
 
     socket.emit("message", { message, id });
-    document.getElementById("chatInput").value = ""; // value send ho jati hai to use empty kar deti hai 
+    document.getElementById("chatInput").value = "";
   }
 
   useEffect(() => {
@@ -32,12 +32,10 @@ function Chat() {
       setId(socket.id)
     })
 
-    // Yaha ham backend ke liye user ke through data send karte hai and wah object from me hota hai {user:user}
     socket.emit("joined", { user })
 
-    // jaha par data ko receive karte hai waha par arrow function ka use karte hai 
     socket.on("welcome", (data) => {
-      setMessages([...messages, data]) // means phale all message me travers karo and then data ko send karo 
+      setMessages([...messages, data])
     })
 
     socket.on("userJoined", (data) => {
@@ -49,7 +47,7 @@ function Chat() {
     })
 
     return () => {
-      socket.emit('disconnect'); // jab user disconnect ho gya to us socket ko kar dete hai off
+      socket.emit('disconnect');
       socket.off()
     }
 
@@ -59,25 +57,23 @@ function Chat() {
   useEffect(() => {
     socket.on("sendMessage", (data) => {
       setMessages([...messages, data])
-      // console.log(data.user, data.message, data.id)
     })
 
     return () => {
-      socket.off()  // one time message aane ke close kardo array ko 
+      socket.off()
     }
-  }, [messages]);  // means tumhe kab kab show karna hai jab jab messages travers ho whole aaraya me
+  }, [messages]);
 
   return (
     <div className="chatPage">
       <div className="chatContainer">
         <div className="header">
           <h2><i class="uil uil-comment-heart"></i> Chat~App</h2>
-          {/* Here use anchor tag for refresh the data and send to home page  */}
           <a href="/"> <img src={closeBTn} alt="Close" /></a>
         </div>
         <ReactScrollToBottom className="chatBox" >
           {
-            messages.map((item, i) => <Message user={item.id === id ? "" : item.user} message={item.message}
+            messages.map((item, i) => <Message key={i} user={item.id === id ? "" : item.user} message={item.message}
               classs={item.id === id ? 'right' : 'left'} />)
           }
         </ReactScrollToBottom>
