@@ -5,7 +5,7 @@
     display: inline-block;
     clear: both;
     font-size: 1.2vmax;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Baloo 2', cursive;
 }
 
 .right{
@@ -18,6 +18,7 @@
 .left{
     float: left;
     text-align: left;
-    background-color: rgb(196, 255, 184);
+    background-color: rgb(129, 0, 203);
+    color: white;
     
 }

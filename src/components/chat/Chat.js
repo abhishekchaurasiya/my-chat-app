@@ -29,7 +29,6 @@ function Chat() {
     socket = socketIo(EndPoints, { transports: ["websocket"] });
 
     socket.on("connect", () => {
-      alert("connected...")
       setId(socket.id)
     })
 
@@ -72,7 +71,7 @@ function Chat() {
     <div className="chatPage">
       <div className="chatContainer">
         <div className="header">
-          <h2>C CHAT</h2>
+          <h2><i class="uil uil-comment-heart"></i> Chat~App</h2>
           {/* Here use anchor tag for refresh the data and send to home page  */}
           <a href="/"> <img src={closeBTn} alt="Close" /></a>
         </div>
