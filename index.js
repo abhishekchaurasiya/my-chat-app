@@ -7,7 +7,7 @@ const socketIO = require("socket.io");
 
 
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT;
 
 app.get("/", (req, res) => {
     res.send("Hello i am node.js")
