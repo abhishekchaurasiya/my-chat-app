@@ -8,7 +8,9 @@ import closeBTn from "../../images/closeIcon.png"
 import socketIo from "socket.io-client"
 import Message from "../message/Message"
 
-let EndPoints = "http://localhost:4000/";
+// https://abhishekchaurasiya-makes-great-sites.netlify.app
+
+let EndPoints = "https://backend-nodejs-code.herokuapp.com/";
 
 let socket;
 
@@ -16,14 +18,22 @@ function Chat() {
 
   const [id, setId] = useState("");
 
-  const [messages, setMessages] = useState([])
+  const [messages, setMessages] = useState([]);
 
+  const [disable, setDisable] = useState(true);
+
+  
+  
   let send = () => {
     const message = document.getElementById("chatInput").value;
-
+    
     socket.emit("message", { message, id });
     document.getElementById("chatInput").value = "";
+    
+    
   }
+
+
 
   useEffect(() => {
     socket = socketIo(EndPoints, { transports: ["websocket"] });
@@ -57,6 +67,7 @@ function Chat() {
   useEffect(() => {
     socket.on("sendMessage", (data) => {
       setMessages([...messages, data])
+
     })
 
     return () => {
@@ -79,7 +90,7 @@ function Chat() {
         </ReactScrollToBottom>
         <div className="inputBox">
           <input onKeyPress={(event) => event.key === "Enter" ? send() : null} type="text" id='chatInput' />
-          <button onClick={send} className='sendBtn'><img src={sendLogo} alt="Send" /></button>
+          <button onClick={send}  className='sendBtn'><img src={sendLogo} alt="Send" /></button>
         </div>
       </div>
 
